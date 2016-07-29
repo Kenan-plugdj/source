@@ -99,7 +99,7 @@
     var loadChat = function (cb) {
         if (!cb) cb = function () {
         };
-        $.get("https://rawgit.com/basicBot/source/master/lang/langIndex.json", function (json) {
+        $.get("https://rawgit.com/kurium/source/master/lang/pt-BR.json", function (json) {
             var link = basicBot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -240,9 +240,9 @@
         status: false,
         name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
+        scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/basicBot/source/master/lang/en.json",
+        chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
@@ -250,8 +250,8 @@
         settings: {
             botName: "basicBot",
             language: "english",
-            chatLink: "https://rawgit.com/basicBot/source/master/lang/en.json",
-            scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
+            chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
+            scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
             startupVolume: 0, // 0-100
@@ -382,7 +382,7 @@
                     var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
                     var user = basicBot.userUtilities.lookupUser(winner);
                     var name = user.username;
-                    API.sendChat(subChat(basicBot.chat.winnerpicked, {name: name, position: pos}));
+                    API.sendChat(subChat(basicBot.chat.winnerpicked, {name: name, position: 1}));
                     setTimeout(function (winner, pos) {
                         basicBot.userUtilities.moveUser(winner, pos, false);
                     }, 1 * 1000, winner, pos);
@@ -2957,7 +2957,7 @@
             },
 
             rouletteCommand: {
-                command: 'roulette',
+                command: ['roulette','roleta'],
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
