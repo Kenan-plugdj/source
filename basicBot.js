@@ -254,17 +254,17 @@
             scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
-            startupVolume: 0, // 0-100
-            startupEmoji: false, // true or false
+            startupVolume: 100, // 0-100
+            startupEmoji: true, // true or false
             autowoot: true,
-            autoskip: false,
+            autoskip: true,
             smartSkip: true,
             cmdDeletion: true,
-            maximumAfk: 120,
-            afkRemoval: true,
-            maximumDc: 60,
-            bouncerPlus: true,
-            blacklistEnabled: true,
+            maximumAfk: 360,
+            afkRemoval: false,
+            maximumDc: 90,
+            bouncerPlus: false,
+            blacklistEnabled: false,
             lockdownEnabled: false,
             lockGuard: false,
             maximumLocktime: 10,
@@ -272,15 +272,15 @@
             maximumCycletime: 10,
             voteSkip: false,
             voteSkipLimit: 10,
-            historySkip: false,
+            historySkip: true,
             timeGuard: true,
             maximumSongLength: 10,
             autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
-            thorCommand: false,
+            thorCommand: true,
             thorCooldown: 10,
-            skipPosition: 3,
+            skipPosition: 1,
             skipReasons: [
                 ["theme", "This song does not fit the room theme. "],
                 ["op", "This song is on the OP list. "],
@@ -296,7 +296,7 @@
             motdInterval: 5,
             motd: "Temporary Message of the Day",
             filterChat: true,
-            etaRestriction: false,
+            etaRestriction: true,
             welcome: true,
             opLink: null,
             rulesLink: null,
