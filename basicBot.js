@@ -254,7 +254,7 @@
             scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
-            startupVolume: 0, // 0-100
+            startupVolume: 100, // 0-100
             startupEmoji: true, // true or false
             autowoot: false,
             autoskip: true,
@@ -274,7 +274,7 @@
             voteSkipLimit: 10,
             historySkip: true,
             timeGuard: true,
-            maximumSongLength: 10,
+            maximumSongLength: 8,
             autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
