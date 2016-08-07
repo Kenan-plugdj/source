@@ -236,13 +236,13 @@
     var botCreatorIDs = ["3851534", "4105209"];
 
     var basicBot = {
-        version: "1",
+        version: "1.0",
         status: false,
         name: "Rock Wins bot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/kurium/RW/master/bot.js",
         cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
+        chatLink: "https://rawgit.com/kurium/RW/master/lang/pt-BR.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
@@ -250,17 +250,17 @@
         settings: {
             botName: "Rock Wins bot",
             language: "portuguese",
-            chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
+            chatLink: "https://rawgit.com/kurium/RW/master/lang/pt-BR.json",
             scriptLink: "https://rawgit.com/kurium/RW/master/bot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
-            startupVolume: 0, // 0-100
-            startupEmoji: false, // true or false
+            startupVolume: 100, // 0-100
+            startupEmoji: true, // true or false
             autowoot: true,
             autoskip: true,
             smartSkip: true,
             cmdDeletion: true,
-            maximumAfk: 360,
+            maximumAfk: 120,
             afkRemoval: false,
             maximumDc: 90,
             bouncerPlus: false,
