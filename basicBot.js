@@ -238,7 +238,7 @@
     var basicBot = {
         version: "1",
         status: false,
-        name: "Rock Wins-bot",
+        name: "Rock Wins bot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/kurium/chatbot/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
@@ -248,7 +248,7 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "Rock Wins-bot",
+            botName: "Rock Wins bot",
             language: "portuguese",
             chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
             scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
