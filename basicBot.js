@@ -237,7 +237,7 @@
 
     var basicBot = {
         version: "2.9.1",
-        status: false,
+        status: true,
         name: "basicBot",
         loggedInID: null,
         scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
@@ -248,15 +248,15 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
-            language: "english",
+            botName: "Rock Wins bot",
+            language: "portuguese",
             chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
             scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
-            startupVolume: 100, // 0-100
+            startupVolume: 0, // 0-100
             startupEmoji: true, // true or false
-            autowoot: true,
+            autowoot: false,
             autoskip: true,
             smartSkip: true,
             cmdDeletion: true,
@@ -295,7 +295,7 @@
             motdEnabled: false,
             motdInterval: 5,
             motd: "Temporary Message of the Day",
-            filterChat: true,
+            filterChat: false,
             etaRestriction: true,
             welcome: true,
             opLink: null,
@@ -306,7 +306,7 @@
             website: null,
             intervalMessages: [],
             messageInterval: 5,
-            songstats: true,
+            songstats: false,
             commandLiteral: "!",
             blacklists: {
                 NSFW: "https://rawgit.com/basicBot/custom/master/blacklists/NSFWlist.json",
