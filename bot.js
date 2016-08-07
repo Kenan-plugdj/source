@@ -240,7 +240,7 @@
         status: false,
         name: "Rock Wins bot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/kurium/chatbot/master/basicBot.js",
+        scriptLink: "https://rawgit.com/kurium/RW/master/bot.js",
         cmdLink: "http://git.io/245Ppg",
         chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
         chat: null,
