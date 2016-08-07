@@ -251,12 +251,12 @@
             botName: "Rock Wins bot",
             language: "portuguese",
             chatLink: "https://rawgit.com/kurium/source/master/lang/pt-BR.json",
-            scriptLink: "https://rawgit.com/kurium/source/master/basicBot.js",
+            scriptLink: "https://rawgit.com/kurium/RW/master/bot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
             startupVolume: 100, // 0-100
             startupEmoji: true, // true or false
-            autowoot: false,
+            autowoot: true,
             autoskip: true,
             smartSkip: true,
             cmdDeletion: true,
