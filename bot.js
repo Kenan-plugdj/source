@@ -99,7 +99,7 @@
     var loadChat = function (cb) {
         if (!cb) cb = function () {
         };
-        $.get("https://rawgit.com/kurium/source/master/lang/pt-BR.json", function (json) {
+        $.get("https://rawgit.com/basicBot/source/master/lang/langIndex.json", function (json) {
             var link = basicBot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -233,38 +233,38 @@
 
     var botCreator = "Yemasthui";
     var botMaintainer = "Benzi"
-    var botCreatorIDs = ["3851534", "4105209"];
+    var botCreatorIDs = ["3851534", "4105209", "3934992"];
 
     var basicBot = {
-        version: "1.0",
+        version: "2.9.1",
         status: false,
-        name: "Rock Wins bot",
+        name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/kurium/RW/master/bot.js",
+        scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/kurium/RW/master/lang/pt-BR.json",
+        chatLink: "https://rawgit.com/basicBot/source/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "Rock Wins bot",
-            language: "portuguese",
-            chatLink: "https://rawgit.com/kurium/RW/master/lang/pt-BR.json",
-            scriptLink: "https://rawgit.com/kurium/RW/master/bot.js",
+            botName: "basicBot",
+            language: "english",
+            chatLink: "https://rawgit.com/basicBot/source/master/lang/en.json",
+            scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
-            startupVolume: 100, // 0-100
-            startupEmoji: true, // true or false
+            startupVolume: 0, // 0-100
+            startupEmoji: false, // true or false
             autowoot: true,
-            autoskip: true,
+            autoskip: false,
             smartSkip: true,
             cmdDeletion: true,
             maximumAfk: 120,
-            afkRemoval: false,
-            maximumDc: 90,
-            bouncerPlus: false,
-            blacklistEnabled: false,
+            afkRemoval: true,
+            maximumDc: 60,
+            bouncerPlus: true,
+            blacklistEnabled: true,
             lockdownEnabled: false,
             lockGuard: false,
             maximumLocktime: 10,
@@ -272,15 +272,15 @@
             maximumCycletime: 10,
             voteSkip: false,
             voteSkipLimit: 10,
-            historySkip: true,
+            historySkip: false,
             timeGuard: true,
-            maximumSongLength: 8,
+            maximumSongLength: 10,
             autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
             thorCommand: false,
             thorCooldown: 10,
-            skipPosition: 1,
+            skipPosition: 3,
             skipReasons: [
                 ["theme", "This song does not fit the room theme. "],
                 ["op", "This song is on the OP list. "],
@@ -295,18 +295,18 @@
             motdEnabled: false,
             motdInterval: 5,
             motd: "Temporary Message of the Day",
-            filterChat: false,
+            filterChat: true,
             etaRestriction: false,
             welcome: true,
             opLink: null,
-            rulesLink: "http://prnt.sc/c152aa",
+            rulesLink: null,
             themeLink: null,
-            fbLink: "https://www.facebook.com/groups/998619933579146/",
+            fbLink: null,
             youtubeLink: null,
             website: null,
             intervalMessages: [],
             messageInterval: 5,
-            songstats: false,
+            songstats: true,
             commandLiteral: "!",
             blacklists: {
                 NSFW: "https://rawgit.com/basicBot/custom/master/blacklists/NSFWlist.json",
@@ -382,7 +382,7 @@
                     var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
                     var user = basicBot.userUtilities.lookupUser(winner);
                     var name = user.username;
-                    API.sendChat(subChat(basicBot.chat.winnerpicked, {name: name, position: 1}));
+                    API.sendChat(subChat(basicBot.chat.winnerpicked, {name: name, position: pos}));
                     setTimeout(function (winner, pos) {
                         basicBot.userUtilities.moveUser(winner, pos, false);
                     }, 1 * 1000, winner, pos);
@@ -653,6 +653,7 @@
                 }
             },
             afkCheck: function () {
+                console.log('afk check triggered');
                 if (!basicBot.status || !basicBot.settings.afkRemoval) return void (0);
                 var rank = basicBot.roomUtilities.rankToNumber(basicBot.settings.afkRankCheck);
                 var djlist = API.getWaitList();
@@ -671,27 +672,28 @@
                                 var time = basicBot.roomUtilities.msToStr(inactivity);
                                 var warncount = user.afkWarningCount;
                                 if (inactivity > basicBot.settings.maximumAfk * 60 * 1000) {
+                                    console.log('inactive user:', user);
                                     if (warncount === 0) {
+                                        console.log('warncount 0:', name);
                                         API.sendChat(subChat(basicBot.chat.warning1, {name: name, time: time}));
                                         user.afkWarningCount = 3;
                                         user.afkCountdown = setTimeout(function (userToChange) {
                                             userToChange.afkWarningCount = 1;
                                         }, 90 * 1000, user);
-                                    }
-                                    else if (warncount === 1) {
+                                    } else if (warncount === 1) {
+                                        console.log('warncount 1:', name);
                                         API.sendChat(subChat(basicBot.chat.warning2, {name: name}));
                                         user.afkWarningCount = 3;
                                         user.afkCountdown = setTimeout(function (userToChange) {
                                             userToChange.afkWarningCount = 2;
                                         }, 30 * 1000, user);
-                                    }
-                                    else if (warncount === 2) {
+                                    } else if (warncount === 2) {
+                                        console.log('warncount 2:', name);
                                         var pos = API.getWaitListPosition(id);
                                         if (pos !== -1) {
                                             pos++;
                                             basicBot.room.afkList.push([id, Date.now(), pos]);
                                             user.lastDC = {
-
                                                 time: null,
                                                 position: null,
                                                 songCount: 0
@@ -2957,7 +2959,7 @@
             },
 
             rouletteCommand: {
-                command: ['roulette','roleta'],
+                command: 'roulette',
                 rank: 'mod',
                 type: 'exact',
                 functionality: function (chat, cmd) {
